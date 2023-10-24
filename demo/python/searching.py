@@ -5,7 +5,19 @@ def linear_search(lst: list, key) -> int:
     return -1
 
 
-def binary_search(lst: list, key) -> int:
+def binary_search(lst: list, key: int) -> int:
+    """对已经从小到大排好序的整数列表应用折半查找算法
+
+    Args:
+        lst (list): 一个列表. 其元素全部为整数, 并已经按升序排列.
+        key (int): 待查找的数值.
+
+    Returns:
+        int: lst中的一个元素的编号, 其值与key相同. 
+        如果lst中存在多个这样的元素, 返回第一个被找到的.
+        如果lst中没有这样的元素, 返回-1.
+    """    
+
     start = 0 # 当前查找范围的头一个元素的编号
     end = len(lst) # 当前查找范围的最后一个元素的编号
     while start < end:
@@ -26,7 +38,20 @@ def binary_search(lst: list, key) -> int:
     return -1 # 如果终究没找到，return -1
 
 
-def binary_search_recursive(lst: list, key, start: int, end: int) -> int:
+def binary_search_recursive(lst: list, key: int, start: int, end: int) -> int:
+    """用递归实现折半查找算法
+
+    Args:
+        lst (list): 一个列表. 其元素全部为整数, 并已经按升序排列.
+        key (int): 待查找的数值.
+        start (int): 查找范围里第一个元素的编号.
+        end (int): 查找范围里最后一个元素的编号 + 1.
+
+    Returns:
+        int: lst中的一个元素的编号, 其值与key相同. 
+        如果lst中存在多个这样的元素, 返回第一个被找到的.
+        如果lst中没有这样的元素, 返回-1.
+    """    
     if start >= end:
         return -1
     mid = (start + end) // 2
@@ -38,7 +63,7 @@ def binary_search_recursive(lst: list, key, start: int, end: int) -> int:
     else:
         return mid
 
-if __name__ == "__main__":
+def main():
     short_list = [8, 5, 2, 6, 4, 7, 1, 3]
     # list_size = 20
     # max_n = 30
@@ -70,3 +95,7 @@ if __name__ == "__main__":
 
     print(binary_search(orderedlst, 6))
     print(binary_search_recursive(orderedlst, 28, 0, len(orderedlst)))
+
+
+if __name__ == "__main__":
+    main()
