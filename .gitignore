@@ -13,6 +13,9 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# Python cache
+__pycache__/
+
 # Package Files #
 *.jar
 *.war
