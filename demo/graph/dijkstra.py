@@ -27,9 +27,7 @@ class Dijkstra:
         while self.todo:
             current = self.todo.pop(self.next_node())
             baseline = self.min_paths[current]
-            for neighbour in self.network.edges[current]:
-                node = neighbour[0]
-                edge = neighbour[1]
+            for [node, edge] in self.network.edges[current]:
                 if baseline[1] + edge < self.min_paths[node][1]:
                     self.min_paths[node][0] = f'{baseline[0]}-{node}'
                     self.min_paths[node][1] = baseline[1] + edge
