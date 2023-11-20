@@ -1,6 +1,8 @@
-"""单向链表 (Singly Linked List) 的Python实现的演示.
+"""
+单向链表 (Singly Linked List) 的Python实现的演示.
 
 最初在讲授《CAIE A level 计算机科学》(9618) 的课堂上编写.
+
 主要教学目的:
 1.  演示第19.1.3节 "链表" 的知识点的代码实现.
 2.  复习如何在Python中实现第20.1.3节 "OOP" 所述的编程思想和作风.
@@ -11,9 +13,10 @@
 作者: 马正
 组织: 渊学通教育广州分校, 上海科桥教育
 创建日期: Oct. 10, 2023
-最后修改日期: Nov. 12, 2023
+最后修改日期: Nov. 18, 2023
 Python版本: 3.12
 """
+
 from typing import Any, Self
 
 
