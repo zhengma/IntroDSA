@@ -1,3 +1,25 @@
 {
-    "java.dependency.syncWithFolderExplorer": false
+    "java.dependency.syncWithFolderExplorer": false,
+    "editor.rulers": [
+        {
+            "column": 80,
+            "color": "#777777"
+        }
+    ],
+    "editor.tokenColorCustomizations": {
+        "comments": "#00D7D1",
+        // "strings": "#EFE4B0",
+        "textMateRules": [
+            {
+                "scope": ["string.quoted.docstring.multi.python",
+                          "comment.block.documentation",
+                          "comment.block.javadoc.java",
+                          "punctuation.definition.comment.begin.documentation",
+                          "punctuation.definition.comment.end.documentation"],
+                "settings": {
+                    "foreground": "#EFE4B0"
+                }
+            }
+        ]
+    }
 }

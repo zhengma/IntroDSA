@@ -96,9 +96,9 @@ class ExpressionTree():
         return self.__root.post_order()
 
 def main():
-    test_expr = ExpressionTree('a + b * c + d * e')
+    test_expr = ExpressionTree('a - b * c + d * e')
     print(test_expr.RPN())
-    test_expr2 = ExpressionTree('(a + b) * (c + d) * e')
+    test_expr2 = ExpressionTree('(a - b) * (c + d) / e')
     print(test_expr2.RPN())
 
 if __name__ == "__main__":

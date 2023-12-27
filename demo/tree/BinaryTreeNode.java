@@ -21,28 +21,34 @@ public class BinaryTreeNode<T> {
     return this.value;
   }
 
+  public ArrayList<T> asList() {
+    ArrayList<T> lst = new ArrayList<T>();
+    lst.add(this.value);
+    return lst;
+  }
+
   public void set(T value) {
     this.value = value;
   }
 
-  public BinaryTreeNode<T> get_left() {
+  public BinaryTreeNode<T> getLeft() {
     return this.left;
   }
 
-  public BinaryTreeNode<T> get_right() {
+  public BinaryTreeNode<T> getRight() {
     return this.right;
   }
 
-  public void set_left(BinaryTreeNode<T> leftNode) {
+  public void setLeft(BinaryTreeNode<T> leftNode) {
     this.left = leftNode;
   }
 
-  public void set_right(BinaryTreeNode<T> rightNode) {
+  public void setRight(BinaryTreeNode<T> rightNode) {
     this.right = rightNode;
   }
 
   public void preOrder(ArrayList<T> elmList) {
-    elmList.add(this.value);
+    elmList.addAll(this.asList());
     if (this.left != null) {
       this.left.preOrder(elmList);
     }
@@ -55,7 +61,7 @@ public class BinaryTreeNode<T> {
     if (this.left != null) {
       this.left.inOrder(elmList);
     }
-    elmList.add(this.value);
+    elmList.addAll(this.asList());
     if (this.right != null) {
       this.right.inOrder(elmList);
     }
@@ -68,23 +74,23 @@ public class BinaryTreeNode<T> {
     if (this.right != null) {
       this.right.postOrder(elmList);
     }
-    elmList.add(this.value);
+    elmList.addAll(this.asList());
   }
   
-  public void levelOrder(ArrayList<T> elemList) {
+  public void levelOrder(ArrayList<T> elmList) {
     LinkedList<BinaryTreeNode<T>> queue = new LinkedList<BinaryTreeNode<T>>();
     queue.offer(this);
     BinaryTreeNode<T> current;
 
     while (!queue.isEmpty()) {
       current = queue.poll();
-      if (current.get_left() != null) {
-        queue.offer(current.get_left());
+      if (current.getLeft() != null) {
+        queue.offer(current.getLeft());
       }
-      if (current.get_right() != null) {
-        queue.offer(current.get_right());
+      if (current.getRight() != null) {
+        queue.offer(current.getRight());
       }
-      elemList.add(current.get());
+      elmList.addAll(current.asList());
     }
   }
 }
