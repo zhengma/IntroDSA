@@ -1,4 +1,8 @@
-class TreeNode:
+from typing import Optional, TypeVar, Self
+
+V = TypeVar("V")
+
+class TreeNode[V]:
     """本类描述二叉树的一个节点
 
     Attributes:
@@ -6,25 +10,30 @@ class TreeNode:
         pleft (TreeNode): 指向左节点的指针.
         pright (TreeNode): 指向右节点的指针.
 
-    """        
-    def __init__(self, value):
+    """
+
+    val: V
+    pleft: Self[V]
+    pright: Self[V]
+
+    def __init__(self, value: V):
         self.val = value
         self.pleft = None
         self.pright = None
 
-    def set_left(self, leftnode):
+    def set_left(self, leftnode: Self[V]) -> None:
         self.pleft = leftnode
 
-    def set_right(self, rightnode):
+    def set_right(self, rightnode) -> None:
         self.pright = rightnode
 
-    def print(self):
+    def print(self) -> None:
         print(self.val, end = ' ')
 
-    def __to_list__(self):
+    def __to_list__(self) -> list[V]:
         return [self.val]
 
-    def pre_order(self) -> list:
+    def pre_order(self) -> list[V]:
         """返回二叉树中所有元素按前序遍历的结果
 
         Returns:
@@ -42,17 +51,17 @@ class TreeNode:
             + (self.pleft.pre_order() if self.pleft else []) 
             + (self.pright.pre_order() if self.pright else []))
 
-    def in_order(self) -> list:
+    def in_order(self) -> list[V]:
         return ((self.pleft.in_order() if self.pleft else []) 
             + self.__to_list__() 
             + (self.pright.in_order() if self.pright else []))
 
-    def post_order(self) -> list:
+    def post_order(self) -> list[V]:
         return ((self.pleft.post_order() if self.pleft else []) 
             + (self.pright.post_order() if self.pright else []) 
             + self.__to_list__())
 
-    def level_order(self) -> list:
+    def level_order(self) -> list[V]:
         queue = [self]
         result = []
         while queue: # 只要queue还没空
@@ -68,7 +77,9 @@ class TreeNode:
                 else max(self.pleft.depth() if self.pleft else 0, 
                          self.pright.depth()if self.pright else 0) + 1)
 
-class TreeNodeWithParent(TreeNode):
+class TreeNodeWithParent(TreeNode[V]):
+
+    parent: Self[V]
 
     def __init__(self, value):
         super().__init__(value)
@@ -82,15 +93,15 @@ class TreeNodeWithParent(TreeNode):
         super().set_right(rightnode)
         rightnode.parent = self
     
-    def ancestors(self) -> list:
-        result = []
+    def ancestors(self) -> list[V]:
+        result: list[V] = []
         ptr = self
         while ptr:
             result.append(ptr)
             ptr = ptr.parent
         return result
     
-    def lca(self, other):
+    def lca(self, other: Self[V]) -> Self[V]:
         a1 = self.ancestors()
         a2 = other.ancestors()
         ptr = a1.pop()
@@ -101,7 +112,7 @@ class TreeNodeWithParent(TreeNode):
         return result
 
 def main():
-    nodes = []
+    nodes: list[TreeNodeWithParent[str]] = []
     
     #            A
     #       /         \
@@ -116,17 +127,17 @@ def main():
         # nodes.append(TreeNode(s))
         nodes.append(TreeNodeWithParent(s))
 
-    nodes[0].add_left(nodes[1])
-    nodes[0].add_right(nodes[2])
-    nodes[1].add_left(nodes[3])
-    nodes[1].add_right(nodes[4])
-    nodes[2].add_left(nodes[5])
-    nodes[2].add_right(nodes[6])
-    nodes[3].add_left(nodes[7])
-    nodes[3].add_right(nodes[8])
-    nodes[4].add_left(nodes[9])
-    nodes[4].add_right(nodes[10])
-    nodes[5].add_left(nodes[11])
+    nodes[0].set_left(nodes[1])
+    nodes[0].set_right(nodes[2])
+    nodes[1].set_left(nodes[3])
+    nodes[1].set_right(nodes[4])
+    nodes[2].set_left(nodes[5])
+    nodes[2].set_right(nodes[6])
+    nodes[3].set_left(nodes[7])
+    nodes[3].set_right(nodes[8])
+    nodes[4].set_left(nodes[9])
+    nodes[4].set_right(nodes[10])
+    nodes[5].set_left(nodes[11])
 
     root = nodes[0]
 
