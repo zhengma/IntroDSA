@@ -1,8 +1,8 @@
 package demo.tree;
 
 import java.util.ArrayList;
-// import demo.tree.*;
 
+@SuppressWarnings("unchecked")
 public class TreeTest {
   public static void main(String[] args) {
     String nodes = "ABCDEFGHIJKL";

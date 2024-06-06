@@ -1,4 +1,5 @@
 from graph import Graph
+from pprint import pprint
 
 class Dijkstra:
     
@@ -34,11 +35,11 @@ class Dijkstra:
 
 if __name__ == "__main__":
     test_g = Graph(list('ABCDEFG'))
-    print(test_g.edges)
     test_g.add_edge([('A', 'B', 5), ('A', 'C', 6), ('B', 'D', 4), 
                      ('B', 'E', 6), ('C', 'E', 7), ('C', 'F', 6),
                      ('D', 'E', 3), ('D', 'G', 12), ('E', 'F', 5),
                      ('E', 'G', 6), ('F', 'G', 8)])
+    pprint(test_g.edges)
     solver = Dijkstra(test_g, 'A')
     # print(solver.min_paths)
     solver.solve()
