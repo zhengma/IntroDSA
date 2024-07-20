@@ -22,8 +22,8 @@ class Dove extends Bird {
 }
 
 public class BirdProblem {
-	public static void main(String[] args) {
-		Bird pigeon = new Dove();
+  public static void main(String[] args) {
+    Bird pigeon = new Dove();
     pigeon.act();
-	}
+  }
 }

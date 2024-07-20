@@ -31,12 +31,12 @@ public class SelectionSort {
   } 
 
   public static void main(String[] args) {
-    int arr[] = {3, 8, 2, 6, 2, 9, 4, 1, 9, 5};
-    List<Integer> lst = new ArrayList<Integer>
-        (Arrays.asList(8, 5, 2, 6, 4, 7, 1, 3));
+    int[] arr = {3, 8, 2, 6, 2, 9, 4, 1, 9, 5};
     System.out.println("Before: " + Arrays.toString(arr));
     sort(arr);
     System.out.println("After: " + Arrays.toString(arr));
+    List<Integer> lst = new ArrayList<Integer>(
+        Arrays.asList(8, 5, 2, 6, 4, 7, 1, 3));
     System.out.println("Before: " + lst);
     sort(lst);
     System.out.println("After: " + lst);

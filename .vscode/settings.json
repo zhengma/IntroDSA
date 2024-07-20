@@ -26,5 +26,6 @@
     "C_Cpp.default.compilerPath": "C:\\msys64\\ucrt64\\bin\\g++.exe",
     "files.associations": {
         "new": "cpp"
-    }
+    },
+    "java.checkstyle.configuration": "/google_checks.xml"
 }
