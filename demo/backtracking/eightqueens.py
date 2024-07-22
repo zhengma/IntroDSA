@@ -10,8 +10,8 @@ def isvalid(board: list) -> bool:
     return True
 
 def print_board(board: list):
-    for i in range(len(board)):
-        print(chr(ord('A') + i) + str(board[i] + 1), end='\t')
+    for row, col in enumerate(board):
+        print(chr(ord('A') + row) + str(col + 1), end='\t')
     print("")
 
 def eight_queen():
@@ -22,9 +22,8 @@ def eight_queen():
             if len(board) < 8:
                 board.append(0)
                 continue
-            else:
-                print_board(board)
-                counter += 1
+            print_board(board)
+            counter += 1
         while board and board[-1] >= 7:
             board.pop()
         if board:

@@ -16,13 +16,13 @@
 Python版本: 3.12
 """
 
-from typing import Optional, TypeVar
+from typing import Optional, TypeVar, Generic
 from binarytree import TreeNode
 
 V = TypeVar("V")
 
 
-class BSTNode[V](TreeNode):
+class BSTNode(TreeNode, Generic[V]):
     """表示二叉搜索树 (Binary Search Tree, BST) 的一个节点, 
     继承自普通的二叉树节点类TreeNode
     """
@@ -42,7 +42,7 @@ class BSTNode[V](TreeNode):
         return [self.val] * self.count
 
 
-class BST[V]:
+class BST(Generic[V]):
 
     def __init__(self, data: Optional[list[V]]) -> None:
         """构造器, 可以选择在新建实例时以列表的形式填入初始数据.

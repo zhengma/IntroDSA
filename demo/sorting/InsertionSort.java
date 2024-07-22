@@ -1,7 +1,15 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class InsertionSort {
 
+  /**
+   * 插入排序算法演示.
+
+   * @param arr {@code int[]} 待排序的数组.  执行完毕后列表本身变为已排好序的.
+   */
   public static void sort(int[] arr) {
     int size = arr.length;
     for (int p = 1; p < size; p++) {

@@ -9,7 +9,7 @@ class BinarySearch {
     } else {
       int mid = (start + end) / 2; // mid 是待查找的这段的中点
       System.out.println("Looking at: " + nums[mid]);
-      // 这是让Jessica看清：搜索过程中检查了哪几个数字
+      // 这是方便看清：搜索过程中检查了哪几个数字
       if (target == nums[mid]) {
         return mid; // 如果mid这个位置恰好是待查找的数字，直接返回这个编号
       } else if (target < nums[mid]) {

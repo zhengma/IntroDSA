@@ -14,15 +14,15 @@ class ScoreReport: # Python 中类的声明: "class + 名字"
 
     def calculate_average(self):
         self.average = sum(self.marks.values())/len(self.marks)
-        # 随堂测试：写'/len(self.marks)', 而不直接写'/4', 有啥优点? 
+        # 随堂测试：写'/len(self.marks)', 而不直接写'/4', 有啥优点?
 
 
 
-class ScoreReport2: 
+class ScoreReport2:
 
-    def __init__(self, name: str, id: str):
+    def __init__(self, name: str, studentid: str):
         self.__name = name # Python中，如果想表示某个属性“外人最好不要直接乱动”，就在名字前面加两个下划线
-        self.__id = id
+        self.__id = studentid
         self.__marks = {'English': 0, 'Math': 0, 'Physics': 0, 'CS': 0}
 
     def get_mark(self, subject: str) -> int: # 读取属性返回给外界的method，称为getter
@@ -69,6 +69,8 @@ def main():
 
     pony.grade = 'A'
     print(pony.grade)
+    # 在实例中添加类里没有的变量不妨碍正常运行
+
     try:
         print(justin.grade)
     except AttributeError:
@@ -89,12 +91,12 @@ def main():
         print(e)
     # Python会阻止开头带了双下划线的属性的访问
 
-    pony.__no_private_method__()
+    pony2.__no_private_method__()
     # 但是带了前后双下划线的方法还是可以访问
 
-    pony.set_mark('Physics', 109) # data validation，阻止了超出范围的数值填入分数栏
-    pony.set_mark('Physics', 90)
-    print(pony.get_average())
+    pony2.set_mark('Physics', 109) # data validation，阻止了超出范围的数值填入分数栏
+    pony2.set_mark('Physics', 90)
+    print(pony2.get_average())
 
 if __name__ == "__main__":
     main()

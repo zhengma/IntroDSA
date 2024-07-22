@@ -13,7 +13,7 @@ public class MergeSort {
     
   public static void merge(int[] data, int start, int mid, int end) {
     // 先新建两个array，分别存储左半截和右半截
-    // 左右半截长度，如果Jessica考试时忘了结论，就找一组具体的数试一下
+    // 左右半截长度，如果考试时忘了结论，就找一组具体的数试一下
     int[] left = new int[mid - start];
     int[] right = new int[end - mid];
     // 把左右两个半截分别拷进去

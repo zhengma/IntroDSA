@@ -3,7 +3,7 @@ class Graph:
         self.vertices = vertices
         self.edges = {vertex: set() for vertex in vertices}
         self.directed = directed
-    
+
     def add_edge(self, edges: list[tuple]):
         for edge in edges:
             try:

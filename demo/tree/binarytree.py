@@ -1,8 +1,8 @@
-from typing import Optional, TypeVar, Self
+from typing import Generic, TypeVar, Self
 
 V = TypeVar("V")
 
-class TreeNode[V]:
+class TreeNode(Generic[V]):
     """本类描述二叉树的一个节点
 
     Attributes:
@@ -13,15 +13,15 @@ class TreeNode[V]:
     """
 
     val: V
-    pleft: Self[V]
-    pright: Self[V]
+    pleft: Self
+    pright: Self
 
     def __init__(self, value: V):
         self.val = value
         self.pleft = None
         self.pright = None
 
-    def set_left(self, leftnode: Self[V]) -> None:
+    def set_left(self, leftnode: Self) -> None:
         self.pleft = leftnode
 
     def set_right(self, rightnode) -> None:
@@ -47,18 +47,18 @@ class TreeNode[V]:
             result += self.pright.pre_order() # 前序遍历右子树
         return result'''
         # 充分看懂了上面的解法后，可以用以下办法写，简洁很多
-        return (self.__to_list__() 
-            + (self.pleft.pre_order() if self.pleft else []) 
+        return (self.__to_list__()
+            + (self.pleft.pre_order() if self.pleft else [])
             + (self.pright.pre_order() if self.pright else []))
 
     def in_order(self) -> list[V]:
-        return ((self.pleft.in_order() if self.pleft else []) 
-            + self.__to_list__() 
+        return ((self.pleft.in_order() if self.pleft else [])
+            + self.__to_list__()
             + (self.pright.in_order() if self.pright else []))
 
     def post_order(self) -> list[V]:
-        return ((self.pleft.post_order() if self.pleft else []) 
-            + (self.pright.post_order() if self.pright else []) 
+        return ((self.pleft.post_order() if self.pleft else [])
+            + (self.pright.post_order() if self.pright else [])
             + self.__to_list__())
 
     def level_order(self) -> list[V]:
@@ -73,26 +73,26 @@ class TreeNode[V]:
         return result
 
     def depth(self) -> int:
-        return (1 if not (self.pleft or self.pright) 
-                else max(self.pleft.depth() if self.pleft else 0, 
+        return (1 if not (self.pleft or self.pright)
+                else max(self.pleft.depth() if self.pleft else 0,
                          self.pright.depth()if self.pright else 0) + 1)
 
-class TreeNodeWithParent(TreeNode[V]):
+class TreeNodeWithParent(TreeNode, Generic[V]):
 
-    parent: Self[V]
+    parent: Self
 
     def __init__(self, value):
         super().__init__(value)
         self.parent = None
-    
+
     def set_left(self, leftnode):
         super().set_left(leftnode)
         leftnode.parent = self
-    
+
     def set_right(self, rightnode):
         super().set_right(rightnode)
         rightnode.parent = self
-    
+
     def ancestors(self) -> list[V]:
         result: list[V] = []
         ptr = self
@@ -100,8 +100,8 @@ class TreeNodeWithParent(TreeNode[V]):
             result.append(ptr)
             ptr = ptr.parent
         return result
-    
-    def lca(self, other: Self[V]) -> Self[V]:
+
+    def lca(self, other: Self) -> Self:
         a1 = self.ancestors()
         a2 = other.ancestors()
         ptr = a1.pop()
@@ -113,7 +113,7 @@ class TreeNodeWithParent(TreeNode[V]):
 
 def main():
     nodes: list[TreeNodeWithParent[str]] = []
-    
+
     #            A
     #       /         \
     #      B           C

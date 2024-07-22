@@ -1,7 +1,18 @@
 def linear_search(lst: list, key) -> int:
-    for i in range(len(lst)):
-        if (key == lst[i]):
-            return i
+    """对任意列表应用线性查找算法
+
+    Args:
+        lst (list): 列表
+        key (_type_): 待查找的值
+
+    Returns:
+        int: lst中的一个元素的编号, 其值与key相同. 
+        如果lst中存在多个这样的元素, 返回第一个被找到的.
+        如果lst中没有这样的元素, 返回-1.
+    """
+    for index, value in enumerate(lst):
+        if key == value:
+            return index
     return -1
 
 
@@ -16,7 +27,7 @@ def binary_search(lst: list, key: int) -> int:
         int: lst中的一个元素的编号, 其值与key相同. 
         如果lst中存在多个这样的元素, 返回第一个被找到的.
         如果lst中没有这样的元素, 返回-1.
-    """    
+    """
 
     start = 0 # 当前查找范围的头一个元素的编号
     end = len(lst) # 当前查找范围的最后一个元素的编号
@@ -31,7 +42,7 @@ def binary_search(lst: list, key: int) -> int:
             # 之所以要 +1，是因为我知道mid这里肯定找不到了，
             # 所以不需要再纳入搜索范围了。
             # 下面的 -1 同理
-        elif (key < lst[mid]): # x如果在list中，一定在左半截
+        elif key < lst[mid]: # x如果在list中，一定在左半截
             end = mid # 左半截的start还是原来的start，end变为mid - 1
         else: # 既不大于又不小于，就是找到了一个
             return mid # 就返回这个的编号
@@ -51,7 +62,7 @@ def binary_search_recursive(lst: list, key: int, start: int, end: int) -> int:
         int: lst中的一个元素的编号, 其值与key相同. 
         如果lst中存在多个这样的元素, 返回第一个被找到的.
         如果lst中没有这样的元素, 返回-1.
-    """    
+    """
     if start >= end:
         return -1
     mid = (start + end) // 2

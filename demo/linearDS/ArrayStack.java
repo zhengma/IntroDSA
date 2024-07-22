@@ -21,6 +21,12 @@ public class ArrayStack {
     return this.ptr == 0;
   }
   
+  /**
+   * 入栈.
+
+   * @param val {@code int} 待入栈的值
+   * @return {@code boolean} 取值为true当且仅当入栈成功.
+   */
   public boolean push(int val) {
     if (ptr >= MAX_SIZE) {
       System.out.println("Stack is full!");
@@ -31,7 +37,12 @@ public class ArrayStack {
       return true;
     }
   }
-  
+
+  /**
+   * 出栈.
+
+   * @return {@code int} 若栈非空则返回弹出的值, 否则返回-1。
+   */
   public int pop() {
     if (isEmpty()) {
       System.out.println("Stack is empty!");
@@ -41,7 +52,11 @@ public class ArrayStack {
       return this.data[ptr];
     }
   }
-  
+  /**
+   * 返回栈顶的值, 但不弹出.
+
+   * @return {@code int} 若栈非空则返回栈顶的值, 否则返回-1.
+   */
   public int peek() {
     if (isEmpty()) {
       System.out.println("Stack is empty!");
@@ -51,6 +66,9 @@ public class ArrayStack {
     }
   }
   
+  /**
+   * 显示堆栈的全貌.
+   */
   public String toString() {
     String s = "[";
     for (int i = 0; i < ptr - 1; i++) {
@@ -60,6 +78,9 @@ public class ArrayStack {
     return s + String.valueOf(this.data[ptr - 1]) + "]";
   }
 
+  /**
+   * 测试一组数据.
+   */
   public static void main(String[] args) {
     ArrayStack stack = new ArrayStack();
     System.out.print("Initially the stack is empty: ");

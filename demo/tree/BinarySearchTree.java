@@ -18,12 +18,12 @@ class BstNode<T extends Comparable<T>> extends BinaryTreeNode<T> {
 
   @Override
   public BstNode<T> getLeft() {
-    return (BstNode<T>)super.getLeft();
+    return (BstNode<T>) super.getLeft();
   }
 
   @Override
   public BstNode<T> getRight() {
-    return (BstNode<T>)super.getRight();
+    return (BstNode<T>) super.getRight();
   }
 
   @Override
@@ -98,7 +98,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
   public BinarySearchTree(ArrayList<E> data) {
     root = null;
-    for (E value: data) {
+    for (E value : data) {
       insert(value);
     }
   }
@@ -153,7 +153,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
     return sorted;
   }
 
-  public ArrayList<E> check_BST() {
+  public ArrayList<E> check_Bst() {
     ArrayList<E> checkList = new ArrayList<E>();
     this.root.levelOrder(checkList);
     return checkList;
@@ -196,11 +196,11 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
   private BstNode<E> del(BstNode<E> node, E key) {
     if (key.compareTo(node.get()) < 0) {
-      node.setLeft((node.getLeft() != null) ? del(node.getLeft(), key): null);
+      node.setLeft((node.getLeft() != null) ? del(node.getLeft(), key) : null);
       return node;
     }
     if (key.compareTo(node.get()) > 0) {
-      node.setRight((node.getRight() != null) ? del(node.getRight(), key): null);
+      node.setRight((node.getRight() != null) ? del(node.getRight(), key) : null);
       return node;
     }
     if (node.getCount() > 1) {
@@ -224,7 +224,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
     this.root = del(this.root, key);
   }
 
-/*  public boolean remove(E key) {
+  /*  public boolean remove(E key) {
     BstNodePointers<E> location = locNoRecursive(key);
     if (location.loc() != 0) {
       System.out.println("The value is not in the BST.  Nothing is deleted.");

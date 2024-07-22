@@ -1,12 +1,16 @@
 from binarytree import TreeNode
 
+OPERATORS = '+-*/%'
+LEFT_PAR = '('
+RIGHT_PAR = ')'
+
 class ExpressionTree():
     """ 结合CIE A2 16.3节《编译原理》的内容，
         将正常书写的表达式 (只含标识符和常见运算符) 拆解,
         构成表达式二叉树 (expression binary tree), 
         并输出为逆波兰记法 (RPN) 
     """
-    
+
     def __init__(self, expression: str):
         self.__root = self.make_tree(self.expression_lexical(expression))
 
@@ -28,9 +32,6 @@ class ExpressionTree():
         > expression_lexical('(a + b) * (c + d) * e')
         [['a', '+', 'b'], '*', ['c', '+', 'd'], '*', 'e']
         """
-        OPERATORS = '+-*/%'
-        LEFT_PAR = '('
-        RIGHT_PAR = ')'
         tokens = []
         s = s_raw.replace(" ", "")
         index = 0
@@ -66,9 +67,8 @@ class ExpressionTree():
     def priority(self, op: str) -> int:
         if op in '*/%':
             return 0
-        else:
-            return 1
-    
+        return 1
+
     def subtree(self, ops: list, items: list) -> TreeNode:
         root = TreeNode(ops.pop())
         root.pright = items.pop()
@@ -76,11 +76,10 @@ class ExpressionTree():
         return root
 
     def make_tree(self, tokens: list) -> TreeNode:
-        OPERATORS = '+-*/%'
         items = []
         ops = []
         while tokens:
-            if type(tokens[0]) is list:
+            if isinstance(tokens[0], list):
                 items.append(self.make_tree(tokens.pop(0)))
             elif tokens[0] not in OPERATORS:
                 items.append(TreeNode(tokens.pop(0)))
@@ -91,7 +90,7 @@ class ExpressionTree():
         while len(items) > 1:
             items.append(self.subtree(ops, items))
         return items[0]
-    
+
     def RPN(self):
         return self.__root.post_order()
 

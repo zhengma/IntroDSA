@@ -14,7 +14,7 @@ def main():
     search_test = [3, 9, 10]
     for val in search_test:
         print(f'{val} appeared {test_bst.search(val)} times.')
-    
+
     print("Testing left rotate:")
     test_bst.lr_whole()
     print(test_bst.sorted()) # 排序仍然是正确的

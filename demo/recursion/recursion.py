@@ -6,8 +6,7 @@ def arithmetic(a: int, d: int, n: int) -> int:
     '''
     if n == 1:
         return a
-    else:
-        return arithmetic(a, d, n-1) + d
+    return arithmetic(a, d, n-1) + d
 
 
 def fibonacci(n: int) -> int:
@@ -16,10 +15,9 @@ def fibonacci(n: int) -> int:
 
     n ≥ 1
     '''
-    if n == 1 or n == 2:
+    if n in (1, 2):
         return 1
-    else:
-        return fibonacci(n-1) + fibonacci(n-2)
+    return fibonacci(n-1) + fibonacci(n-2)
 
 
 def fibonacci_1(n: int) -> int:
@@ -30,14 +28,13 @@ def fibonacci_1(n: int) -> int:
     可以把斐波那契数列的前面各项放到一个list里, 直接查阅, 这样就不需要反复算一些前面的项了
     n≥1
     '''
-    if n==1 or n==2:
+    if n in (1, 2):
         return 1
-    else:
-        sequence = [1, 1]
-        for i in range(2, n): 
-            # 注意sequence[i]其实是斐波那契数列的第(i+1)项，所以循环的最后，i = n-1 加入数列第n项
-            sequence.append(sequence[-1] + sequence[-2]) # 每次把最后两项的和加入到末尾
-        return sequence[-1] # 然后返回最后一个元素
+    sequence = [1, 1]
+    for _ in range(2, n):
+        # 注意sequence[i]其实是斐波那契数列的第(i+1)项，所以循环的最后，i = n-1 加入数列第n项
+        sequence.append(sequence[-1] + sequence[-2]) # 每次把最后两项的和加入到末尾
+    return sequence[-1] # 然后返回最后一个元素
 
 
 def fibonacci_2(n: int) -> int:
@@ -47,14 +44,13 @@ def fibonacci_2(n: int) -> int:
     如果只要第n项, 那么前面的项都不用保留
     只需要三个变量来储存即可
     '''
-    if n==1 or n==2:
+    if n in (1, 2):
         return 1
-    else:
-        a = b = 1
-        for i in range(2, n):
-            c = a + b # 算出下一项
-            a = b # 然后把各个变量的值往前挪一格，为下一次计算做准备
-            b = c
+    a = b = 1
+    for _ in range(2, n):
+        c = a + b # 算出下一项
+        a = b # 然后把各个变量的值往前挪一格，为下一次计算做准备
+        b = c
     return c
 
 
@@ -69,7 +65,7 @@ def hanoi(n: int, start: str, via: str, end: str):
         start (str): 起始柱的名称, 刚开始所有圆片都串在这个柱子上
         via (str): 辅助柱的名称
         end (str): 目标柱的名称, 游戏结束时所有圆片都要串到这个柱子上
-    """    
+    """
     if n == 1:
         print(f"{start} -> {end}")
     else:
@@ -79,6 +75,8 @@ def hanoi(n: int, start: str, via: str, end: str):
 
 
 def main():
+    """测试.
+    """
     print(arithmetic(2, 3, 5)) # 14
     print(fibonacci(10)) # 55
     print(fibonacci(20)) # 6765
