@@ -6,6 +6,9 @@
             "color": "#777777"
         }
     ],
+    "[java]": {
+        "editor.rulers": [99]
+    },
     "editor.tokenColorCustomizations": {
         "comments": "#00D7D1",
         // "strings": "#EFE4B0",
@@ -25,7 +28,8 @@
     "cmake.configureOnOpen": false,
     "C_Cpp.default.compilerPath": "C:\\msys64\\ucrt64\\bin\\g++.exe",
     "files.associations": {
-        "new": "cpp"
+        "new": "cpp",
+        "random": "cpp"
     },
     "java.checkstyle.configuration": "/google_checks.xml"
 }
