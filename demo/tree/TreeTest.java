@@ -2,8 +2,19 @@ package demo.tree;
 
 import java.util.ArrayList;
 
+/**
+ * 二叉树的测试驱动类.
+
+ * @author 马正
+ * @version 1.0
+ */
 @SuppressWarnings("unchecked")
 public class TreeTest {
+  /**
+   * 对固定的几乎满的二叉树应用各种方法.
+
+   * @param args 参数
+   */
   public static void main(String[] args) {
     String nodes = "ABCDEFGHIJKL";
     BinaryTreeNode<Character>[] testTree = new BinaryTreeNode[12];

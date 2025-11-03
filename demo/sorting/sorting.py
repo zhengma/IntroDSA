@@ -1,5 +1,3 @@
-import random
-
 def bubble_sort(arr: list):
     """冒泡排序算法演示.
 

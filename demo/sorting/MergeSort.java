@@ -1,5 +1,18 @@
+/**
+ * 演示归并排序的Java实现.
+
+ * @author 马正
+ * @version 1.0
+ */
 public class MergeSort {
-    
+
+  /**
+   * 对一个{@code int}型数组递归地进行归并排序.
+
+   * @param data 待排序的数据所在的数组
+   * @param start {@code data}中待排序的部分的起始元素序号
+   * @param end {@code data}中待排序的部分的末尾元素序号+1
+   */
   public static void mergeSort(int[] data, int start, int end) {
     // 注意：end 不作为“最后一个元素的编号”，而是最后一个元素的编号 + 1
     // 这样比较方便
@@ -10,7 +23,15 @@ public class MergeSort {
       merge(data, start, mid, end); // 合并左右两截
     }
   }
-    
+
+  /**
+   * 把一个数组中分别排好序的两段合并为整个排好序的一段.
+
+   * @param data 一个{@code int}型数组，其中[start:mid]和[mid:end]两段分别从小到大排好了顺序
+   * @param start 左半截的起始元素序号
+   * @param mid 右半截的起始元素序号
+   * @param end 右半截的末元素的序号+1
+   */
   public static void merge(int[] data, int start, int mid, int end) {
     // 先新建两个array，分别存储左半截和右半截
     // 左右半截长度，如果考试时忘了结论，就找一组具体的数试一下
@@ -43,7 +64,12 @@ public class MergeSort {
       p++; // 无论从哪边拷元素，写入位置总往右挪一格
     }
   }
-    
+
+  /**
+   * 测试：对固定数据测试归并排序.
+
+   * @param args 参数.
+   */
   public static void main(String[] args) {
     int[] arr = {8, 5, 2, 6, 4, 7, 1, 3};
     System.out.println("Before: ");
